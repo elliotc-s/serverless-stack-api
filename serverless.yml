@@ -45,6 +45,7 @@ functions:
     events:
       - http:
           path: notes
+          cors: true
           method: post
           authorizer: aws_iam
 
@@ -56,6 +57,7 @@ functions:
     events:
       - http:
           path: notes/{id}
+          cors: true
           method: get
           authorizer: aws_iam
 
@@ -67,6 +69,7 @@ functions:
     events:
       - http:
           path: notes
+          cors: true
           method: get
           authorizer: aws_iam
 
@@ -78,6 +81,7 @@ functions:
     events:
       - http:
           path: notes/{id}
+          cors: true
           method: put
           authorizer: aws_iam
 
@@ -89,6 +93,7 @@ functions:
     events:
       - http:
           path: notes/{id}
+          cors: true
           method: delete
           authorizer: aws_iam
   billing:
@@ -99,5 +104,10 @@ functions:
     events:
       - http:
           path: billing
+          cors: true
           method: post
           authorizer: aws_iam
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
